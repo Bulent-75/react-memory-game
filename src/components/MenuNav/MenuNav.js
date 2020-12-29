@@ -11,23 +11,20 @@ import './MenuNav.css';
 
 
 const MenuNav = () => (
-  <div className="MenuNav">
-      <AppBar position="static">
+     <AppBar position="static" className="app-bar">
         <Toolbar>
           <IconButton edge="start" className={"iconb"} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={"title"}>
-            News
-          </Typography>
+            <Button color="inherit">News</Button>
           <Button color="inherit">Login</Button>
+          <Button color="inherit" className="bt2" >Button2</Button>          
         </Toolbar>
       </AppBar>        
-
-  </div>
 );
 
-MenuNav.propTypes = {};
+MenuNav.propTypes = {
+};
 
 MenuNav.defaultProps = {};
 
