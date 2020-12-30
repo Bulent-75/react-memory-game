@@ -16,7 +16,7 @@ const MenuNav = () => (
           <IconButton edge="start" className={"iconb"} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-            <Button color="inherit">News</Button>
+          <Button color="inherit">News</Button>
           <Button color="inherit">Login</Button>
           <Button color="inherit" className="bt2" >Button2</Button>          
         </Toolbar>
