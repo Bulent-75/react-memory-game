@@ -8,14 +8,18 @@ import DevState from  './components/DevState/DevState.js'
 function App() {
   return (
     
+      <body>
     <div className="App">
       <MenuNav />
       <header className="App-header">
-      <Demo />
-      <MyComp fill="red" width="100" height="30" />
-      <DevState  name="nm1" age="25" />
+        <MyComp fill="red" width="60" height="60" />
+        <DpConnect />
       </header>
+      <content>
+
+      </content>
     </div>
+      </body>
   );
 }
 
