@@ -1,14 +1,8 @@
 import React from 'react';
-<<<<<<< HEAD
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-=======
-import PropTypes from 'prop-types';
-import axios from 'axios';
-import './DpConnect.css';
-import './data.js';
->>>>>>> navbar
+import "./bingo.css" ;
 
 export default class DpConnect extends React.Component {
   state = {
@@ -27,35 +21,22 @@ export default class DpConnect extends React.Component {
       })
   }
  
-<<<<<<< HEAD
   
    render() {
     function NrBox(props) {
-      return <div className={props.hit}>{props.value}</div>
+      return <div className={props.hit} box>{props.value}</div>
     }
     
     return (
-      <ul>fsf
-        { this.state.cards.map(card => <li>Card id: {
-          //console.log(card.vid);
-=======
-  // const cards = data ;
- 
-  render() {
-   const index2 = 0 ;   
-   
-      return (
       <ul>
         { this.state.cards.map(card => <li>Card id: {
-         //console.log(card.vid);
->>>>>>> navbar
+          //console.log(card.vid);
           card.vid[0]['value']
         }
           {
             card.field_bingo_card_numbers.map(number => <ul> <li>{
-<<<<<<< HEAD
-              number.value }
-              const nrBox = <NrBox hit="fdsa" value={number.value} /> ;
+               }
+             { <NrBox hit="box" value={number.value} /> } 
             {
             
             // number.field_bingo_card_tracker
@@ -67,20 +48,6 @@ export default class DpConnect extends React.Component {
          // person.address.map(addr => <li> {addr} </li>)
         
         }</li>)}
-=======
-            number.value }
-            {
-           //  index2 = index2 + 1             
-            // number.field_bingo_card_tracker
-              } -  
-            {
-             index2 
-            }
-            </li></ul>,index2)
-         // person.address.map(addr => <li> {addr} </li>)
-        
-        }</li>,index2)}
->>>>>>> navbar
       </ul>
     )
   }

@@ -1,0 +1,57 @@
+.bingo-container {
+ margin-bottom: 34px;
+}
+
+.bingo-card {
+    border-radius: 16px;
+    width: 80%;
+    height: 100%;    
+    box-sizing: border-box;
+    margin:auto;
+}
+
+.bingo-card-title{
+  padding: 6px;
+  background-color: #333;
+  height:60px;
+}    
+  
+.card-grid{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    column-gap: 1px;
+    grid-row-gap: 1px;    
+    
+}
+
+.box {
+    border: 1px solid black;
+    font-size: 20px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.bingo-card .hit {
+  background-color:green ;
+  color: white;  
+}
+
+.win-pattern {
+  width: 220px;
+  height: 180px; 
+}
+
+.win-pattern .bingo-button {
+  margin:2px;  
+  width: 18px;
+  height: 18px;
+  border-radius:5px;
+}
+
+.swiper-container {
+    height: 320px;
+}
