@@ -23,7 +23,6 @@ export default class DpConnect extends React.Component {
  
   // const cards = data ;
  
-  
   render() {
    const index2 = 0 ;   
    
