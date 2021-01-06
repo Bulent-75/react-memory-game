@@ -1,1 +1,10 @@
 .UserSelect {}
+
+
+#usersToShow {
+    background-color: white;
+    list-style-type: none;
+    width: 37vh;
+    margin: auto;
+    cursor: pointer;
+}

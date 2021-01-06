@@ -22,7 +22,6 @@ function App() {
          </header>
       <content className="content">
         <UserSelect />, 
-        <CardOverview />
       </content>
     </div>
       </body>
