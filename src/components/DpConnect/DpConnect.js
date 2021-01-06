@@ -34,7 +34,7 @@ export default class DpConnect extends React.Component {
           card.vid[0]['value']
         }
           {
-            card.field_bingo_card_numbers.map(number => <ul> <li>{
+            card.field_bingo_card_numbers.map(number => <div class="card-grid"> <li>{
                }
              { <NrBox hit="box" value={number.value} /> } 
             {
@@ -44,7 +44,7 @@ export default class DpConnect extends React.Component {
             {
             
             }
-            </li></ul>)
+            </li></id>)
          // person.address.map(addr => <li> {addr} </li>)
         
         }</li>)}

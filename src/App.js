@@ -1,13 +1,16 @@
 import './App.css';
 import Demo from './components/demo/';
 import MyComp from './components/MyComp/';
+import BingoCard  from './components/BingoCard/BingoCard.js';
+import UserSelect from './components/BingoCard/UserSelect/UserSelect.js' 
 
-import DpConnect from './components/DpConnect/DpConnect.js';
+// import DpConnect from './components/DpConnect/DpConnect.js';
 
 import MenuNav from './components/MenuNav/MenuNav.js';
-import Tabs from './components/Tabs/Tabs.js';
+import CardOverview from './components/BingoCard/CardOverview.js';
+// import Tabs from './components/Tabs/Tabs.js';
 
-import DevState from  './components/DevState/DevState.js'
+// import DevState from  './components/DevState/DevState.js'
 
 function App() {
   return (
@@ -16,12 +19,10 @@ function App() {
     <div className="App">
       <MenuNav />
       <header className="App-header">
-      <Demo />
-      <DpConnect />
-
-      </header>
-      <content>
-
+         </header>
+      <content className="content">
+        <UserSelect />, 
+        <CardOverview />
       </content>
     </div>
       </body>
