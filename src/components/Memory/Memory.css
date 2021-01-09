@@ -1,0 +1,19 @@
+.Memory {}
+
+.card-grid {
+    width: 200px;
+    height: 200px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    column-gap: 1px;
+    grid-row-gap: 1px;
+    margin:auto;
+    background-color: white;
+}
+.card-grid img {
+ width: 46px;
+ height: 46px;
+ text-align: center;
+}

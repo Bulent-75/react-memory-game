@@ -3,6 +3,7 @@ import Demo from './components/demo/';
 import MyComp from './components/MyComp/';
 import BingoCard  from './components/BingoCard/BingoCard.js';
 import UserSelect from './components/BingoCard/UserSelect/UserSelect.js' 
+import Memory from './components/Memory/Memory.js' 
 
 // import DpConnect from './components/DpConnect/DpConnect.js';
 
@@ -21,7 +22,8 @@ function App() {
       <header className="App-header">
          </header>
       <content className="content">
-        <UserSelect />, 
+
+        <Memory />
       </content>
     </div>
       </body>
@@ -29,4 +31,3 @@ function App() {
 }
 
 export default App;
-

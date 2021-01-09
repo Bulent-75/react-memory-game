@@ -19,7 +19,7 @@ class CardOverview  extends React.Component {
      //   let bingoCards = Object.entries(this.state.bingoCards)
       //  console.log ( bingoCards) ;    
 
-      console.log(bingoCards)
+//      console.log(bingoCards)
         return (
            this.props.bingoCards.map((bingoCard,index) =>
          <BingoCard key={index} bingoCard= { bingoCard } /> 
