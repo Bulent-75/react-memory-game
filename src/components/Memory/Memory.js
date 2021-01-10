@@ -13,22 +13,19 @@ export default class Memory extends React.Component {
     super(props);
     var i=0;
 
-    
     this.state = {
       cards:[]
     };
     
     for(i=0;i<16;i++) {
-        this.state.cards.push(
-        {
+        this.state.cards.push({
           picture:i,
           status:0,
           id:i
         });
-      }
+    }
 
-      console.log(this.state.cards);
-
+    console.log(this.state.cards);
 
     this.props = {
       
