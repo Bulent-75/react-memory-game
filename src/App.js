@@ -4,7 +4,6 @@ import MyComp from './components/MyComp/';
 import BingoCard  from './components/BingoCard/BingoCard.js';
 import UserSelect from './components/BingoCard/UserSelect/UserSelect.js' 
 import Memory from './components/Memory/Memory.js' 
-import Foo from './components/Memory/test.js' 
 // import DpConnect from './components/DpConnect/DpConnect.js';
 
 import MenuNav from './components/MenuNav/MenuNav.js';
