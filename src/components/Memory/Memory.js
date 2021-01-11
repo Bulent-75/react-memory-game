@@ -1,80 +1,74 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './Memory.css';
-import defImg from './images/default/def.png';
-import {images} from './images.js'
-
-function Card(props) {
-  return <img src={props.picture} id={props.key} alt='test' />
-
-}
+import React from "react";
+import PropTypes from "prop-types";
+import "./Memory.css";
+import defImg from "./images/default/def.png";
+import { images } from "./images.js";
 
 export default class Memory extends React.Component {
-  
-  
   constructor(props) {
-    
     super(props);
     this.state = {
-      cards:[]
-    };   
+      cards: [],
+      amount:4,
+      clickCount:0
+    };
     
-    function getRandomImages(amount){
+    this.handleClick = this.handleClick.bind(this);
+
+    function getRandomImages(amount) {
       var rndImages = [];
-      for (i=0;i<amount;i++) {
-        rndImages.push(images[Math.floor(Math.random() * images.length)])
-        Math.floor(Math.random() * 100);     // returns a random integer from 0 to 99
+      for (i = 0; i < amount; i++) {
+        let rndImage = Math.floor(Math.random() * images.length);
+        rndImages.push(images[rndImage]);
+        images.splice(rndImage, 1);
       }
       return shuffle(rndImages.concat(rndImages));
     }
-    
- 
-    
-    let rndImages = getRandomImages(8) ;
-    
-    var i=0;
-    for(i=0;i<16;i++) {
+
+    let rndImages = getRandomImages(16);
+
+    var i = 0;
+    for (i = 0; i < 16; i++) {
       this.state.cards.push({
-        picture:`./images/${rndImages[i]}`,
-        status:0,
-        id:i
+        picture: `./images/${rndImages[i]}`,
+        status: 0,
+        id: i,
       });
     }
-    
-    
-    this.props = {
-      
-    }
+
     function shuffle(a) {
       for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [a[i], a[j]] = [a[j], a[i]];
       }
       return a;
-    } 
+    }
+    
   }
+  
+  handleClick() {
+    
+    this.setState({clickCount:1});
 
-  showPic = (e, data) => {
-    // access to e.target here
-    console.log(data);
-    alert('fd');
-}
-
+    console.log("Click happened ag");
+  }        
 
   render() {
-   
-    return(
+    return (
       // <div className="card-actions">
-      //    <button>fs</button> 
+      //    <button>fs</button>
       //   </div>
-        <div className="card-grid">        
-        { this.state.cards.map((card,index) => (
-           <>
-           <Card key={card.id} picture={card.picture} onClick={(e) => this.showPic(e, card.key)}/>
-           </>
-        )) }
-     </div>
-  );
+      <div className="card-grid">
+        {this.state.cards.map((card, index) => (
+          <div onClick={this.handleClick} > 
+            <Card picture={card.picture} id={card.id} alt="fas" />
+             </div>
+        ))}
+      </div>
+    );
+  }
 }
 
+function Card(props) {
+   return <img src={props.picture} id={props.id} alt='test' />
 }
