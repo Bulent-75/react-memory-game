@@ -1,8 +1,8 @@
 .Memory {}
 
 .card-grid {
-    width: 200px;
-    height: 200px;
+    width: 320px;
+    height: 320px;
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: repeat(4, 1fr);
@@ -12,8 +12,12 @@
     margin:auto;
     background-color: white;
 }
+
 .card-grid img {
- width: 46px;
- height: 46px;
+ width: 54px;
+ height: 54px;
  text-align: center;
+ margin:8px;
+ border: 2px solid black;
+ padding: 2px;
 }
