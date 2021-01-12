@@ -15,9 +15,7 @@ export default class Memory extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.startGame = this.startGame.bind(this);
-    
-      
-      
+
     function shuffle(a) {
       for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -25,10 +23,7 @@ export default class Memory extends React.Component {
       }
       return a;
     }
-    
-
-
- 
+  
   function getRandomImages(amount) {
     var rndImages = [];
     let i =0 ;
@@ -68,7 +63,6 @@ startGame() {
 
 }  
   handleClick(e) {
-    
     this.setState({clickCount:1});
     alert(e.target.src)
     console.log("Click happened ag");
@@ -82,7 +76,7 @@ startGame() {
         </div>
       <div className="card-grid">
         {this.state.cards.map((card, index) => (
-          <div onClick={this.handleClick} src={card.picture} > 
+          <div onClick={this.handleClick} id={card.id} >
             <Card picture={card.picture} id={card.id} alt="fas" />
              </div>
         ))}
@@ -93,5 +87,5 @@ startGame() {
 }
 
 function Card(props) {
-   return <img src={props.picture} id={props.id} alt='test' />
+   return <img src={props.picture} id={props.id} alt='test' visible={props.visible} />
 }
