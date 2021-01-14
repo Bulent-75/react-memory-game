@@ -9,15 +9,16 @@ export default class Memory extends React.Component {
     super(props);
     this.state = {
       cards: [],
-      amount:4,
-      flag:0,
-      cardClicked1 : null,
-      cardClicked2 : null
+      amount: 8,
+      flag: 0,
+      cardClicked1: null,
+      cardClicked2: null,
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.startGame = this.startGame.bind(this);
-
+    let amount = this.state.amount/2
+    
     function shuffle(a) {
       for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -25,111 +26,104 @@ export default class Memory extends React.Component {
       }
       return a;
     }
-  
-  function getRandomImages(amount) {
-   // var rndImages = [];
-       
-    const pickRandom = (arr,count) => {
-      let _arr = [...arr];
-      return[...Array(count)].map( ()=> _arr.splice(Math.floor(Math.random() * _arr.length), 1)[0] ); 
+      // var rndImages = [];
+
+      const pickRandom = (arr, count) => {
+        let _arr = [...arr];
+         return [...Array(count)].map(
+          () => _arr.splice(Math.floor(Math.random() * _arr.length), 1)[0]
+        );
+      };
+
+      let rndImages = pickRandom(images, amount);
+      rndImages =  shuffle(rndImages.concat(rndImages));
+
+    var i = 0;
+    for (i = 0; i < amount*2; i++) {
+      this.state.cards.push({
+        picture: rndImages[i],
+        status: 0,
+        picOriginal: rndImages[i],
+        visible: true,
+        id: i,
+      });
     }
-  
-    let rndImages = pickRandom(images,4)
-    return shuffle(rndImages.concat(rndImages));
   }
 
-  let rndImages = getRandomImages(8);
-  var i = 0;
-  for (i = 0; i < 8; i++) {
-    this.state.cards.push({
-      picture: rndImages[i] ,
-      status: 0,
-      picOriginal: rndImages[i],
-      visible:true ,
-      id: i,
-    });
-  }
-}
-
-startGame() {
-
+  startGame() {
     let arr = [];
-    const renderStates = this.state.cards
-    .map((el, i) => {
-      el.picture = 'default/def.png'
-      arr.push(el)
-     return arr
-    })
+    const renderStates = this.state.cards.map((el, i) => {
+      el.picture = "default/def.png";
+      arr.push(el);
+      return arr;
+    });
 
-    this.setState({cards:arr});
-}  
+    this.setState({ cards: arr });
+  }
 
-    handleClick(e) {
-    
-    /// alert(card.picOriginal); 
-    let flag = this.state.flag ;
-    
-    if (flag === 0) { // is first click
-      let card1 = this.state.cards[e.target.id] ;
-      this.setState({flag : 1}) ;
-     // let card = this.state.cardClicked1 ;
-     this.setState({ cardClicked1: card1 })
-     card1.picture = this.state.cards[e.target.id].picOriginal
-    } else { //second click
-      
-      let card2 = this.state.cards[e.target.id] ;
-      
+  handleClick(e) {
+    /// alert(card.picOriginal);
+    let flag = this.state.flag;
+
+    if (flag === 0) {
+      // is first click
+      let card1 = this.state.cards[e.target.id];
+      this.setState({ flag: 1 });
+      // let card = this.state.cardClicked1 ;
+      this.setState({ cardClicked1: card1 });
+      card1.picture = this.state.cards[e.target.id].picOriginal;
+    } else {
+      //second click
+
+      let card2 = this.state.cards[e.target.id];
+
       this.setState({ cardClicked2: card2 });
       // // alert(card2.picOriginal);
-      let card1 = this.state.cardClicked1 ;
-      card2.picture = card2.picOriginal
-      if (card1.picOriginal === card2.picOriginal ) {
-        
+      let card1 = this.state.cardClicked1;
+      card2.picture = card2.picOriginal;
+      if (card1.picOriginal === card2.picOriginal) {
       } else {
-        
-              let defImg = 'default/def.png'
-              console.log(defImg)
-              card1.picture = defImg ;
-              card2.picture = defImg ;
-        
-         setTimeout(function(){
-           card1.picture = defImg ;
-           card2.picture = defImg;
-   
-       },1000)
-       }
+        let defImg = "default/def.png";
+        console.log(defImg);
+        card1.picture = defImg;
+        card2.picture = defImg;
+
+        setTimeout(function () {
+          card1.picture = defImg;
+          card2.picture = defImg;
+        }, 1000);
+      }
       // this.setState({ cardClicked1: null,cardClicked2: null })
-        this.setState({flag : 0}) ;       
+      this.setState({ flag: 0 });
       // console.log(card2.picOriginal);
     }
-    
-        // if   cardClicked.picture = cardClicked.picOriginal
-     
+
+    // if   cardClicked.picture = cardClicked.picOriginal
   }
-    // cardClicked.picture = cardClicked.picOriginal
-    
-    // alert(cardClicked.picOriginal);
+  // cardClicked.picture = cardClicked.picOriginal
+
+  // alert(cardClicked.picOriginal);
 
   render() {
     return (
       <>
-      <div className="card-actions">
-         <button onClick={this.startGame}>Start</button>
-         <button onClick={this.resetGame}>Reset</button>
+        <div className="card-actions">
+          <button onClick={this.startGame}>Start</button>
+          <button onClick={this.resetGame}>Reset</button>
         </div>
-      <div className="card-grid">
-        {this.state.cards.map((card, index) => (
-          <div onClick={this.handleClick} id={card.id} >
-            <Card picture={card.picture} id={card.id} alt="fas" />
-             </div>
-        ))}
-      </div>
+        <div className="card-grid">
+          {this.state.cards.map((card, index) => (
+            <div onClick={this.handleClick} id={card.id}>
+              <Card picture={card.picture} id={card.id} alt="fas" />
+            </div>
+          ))}
+        </div>
       </>
     );
   }
 }
 
 function Card(props) {
-  let path="./images/" + props.picture; 
-   return <img src={path} id={props.id} alt='test' visible={props.visible} />
+  let path = "./images/" + props.picture;
+  return <img src={path} id={props.id} alt="test" visible={props.visible} />;
 }
