@@ -11,13 +11,13 @@ export default class Memory extends React.Component {
       cards: [],
       amount: 8,
       flag: 0,
-      cardClicked1: null,
-      cardClicked2: null,
+      cardClicked1: {},
+      cardClicked2: {},
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.startGame = this.startGame.bind(this);
-    let amount = this.state.amount/2
+    let amount = this.state.amount/2 
     
     function shuffle(a) {
       for (let i = a.length - 1; i > 0; i--) {
@@ -26,17 +26,16 @@ export default class Memory extends React.Component {
       }
       return a;
     }
-      // var rndImages = [];
+    
+    const pickRandom = (arr, count) => {
+      let _arr = [...arr];
+        return [...Array(count)].map(
+        () => _arr.splice(Math.floor(Math.random() * _arr.length), 1)[0]
+      );
+    };
 
-      const pickRandom = (arr, count) => {
-        let _arr = [...arr];
-         return [...Array(count)].map(
-          () => _arr.splice(Math.floor(Math.random() * _arr.length), 1)[0]
-        );
-      };
-
-      let rndImages = pickRandom(images, amount);
-      rndImages =  shuffle(rndImages.concat(rndImages));
+    let rndImages = pickRandom(images, amount);
+    rndImages =  shuffle(rndImages.concat(rndImages));
 
     var i = 0;
     for (i = 0; i < amount*2; i++) {
@@ -62,19 +61,19 @@ export default class Memory extends React.Component {
   }
 
   handleClick(e) {
+
     /// alert(card.picOriginal);
     let flag = this.state.flag;
 
-    if (flag === 0) {
-      // is first click
+    if (flag === 0) {  // first click
+      
       let card1 = this.state.cards[e.target.id];
       this.setState({ flag: 1 });
       // let card = this.state.cardClicked1 ;
       this.setState({ cardClicked1: card1 });
       card1.picture = this.state.cards[e.target.id].picOriginal;
-    } else {
-      //second click
-
+    } else {    //second click
+     
       let card2 = this.state.cards[e.target.id];
 
       this.setState({ cardClicked2: card2 });
@@ -83,15 +82,15 @@ export default class Memory extends React.Component {
       card2.picture = card2.picOriginal;
       if (card1.picOriginal === card2.picOriginal) {
       } else {
+  
+        if(this.timeout) clearTimeout(this.timeout);
         let defImg = "default/def.png";
-        console.log(defImg);
-        card1.picture = defImg;
-        card2.picture = defImg;
-
-        setTimeout(function () {
-          card1.picture = defImg;
-          card2.picture = defImg;
-        }, 1000);
+        this.timeout = setTimeout(() => {
+          this.setState({amount:12})
+           card1.picture = defImg;
+           card2.picture = defImg;
+           this.setState({ cardClicked1: null,cardClicked2: null })
+        },500);
       }
       // this.setState({ cardClicked1: null,cardClicked2: null })
       this.setState({ flag: 0 });
@@ -100,9 +99,10 @@ export default class Memory extends React.Component {
 
     // if   cardClicked.picture = cardClicked.picOriginal
   }
-  // cardClicked.picture = cardClicked.picOriginal
 
-  // alert(cardClicked.picOriginal);
+  doSearch = (event) => {
+  
+}
 
   render() {
     return (
@@ -110,6 +110,7 @@ export default class Memory extends React.Component {
         <div className="card-actions">
           <button onClick={this.startGame}>Start</button>
           <button onClick={this.resetGame}>Reset</button>
+          <button onClick={this.doSearch}>tets</button>
         </div>
         <div className="card-grid">
           {this.state.cards.map((card, index) => (

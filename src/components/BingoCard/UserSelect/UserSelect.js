@@ -97,7 +97,7 @@ class UserSelect extends React.Component {
   
   render() {
   function returnOneUser() {
-      if (this.state.usersToShow.length  == 1) {
+      if (this.state.usersToShow.length  === 1) {
         alert('d');
       }
     }
